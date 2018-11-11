@@ -149,3 +149,10 @@ data = {"thing": "value"}
 r = requests.post('https://api.example.com', json=data)
 ```
 
+#### Time-keeping
+```
+import ntptime
+import utime
+ntptime.settime()
+utime.localtime()
+```
