@@ -15,7 +15,7 @@ http://micropython.org/download/#esp8266
 
 #### install esptool
 ```
-sudo pip install esptool
+sudo pip install esptool adafruit-ampy
 ```
 
 #### flash firmware:
@@ -28,11 +28,12 @@ sudo esptool.py --port /dev/ttyUSB0 --baud 460800 write_flash --flash_size=detec
 ### Interactive access:
 Micropython interpreter
 Paste mode (disable auto-indent) = Ctrl-E, then Ctrl-D to end
+Ctrl-A k to exit screen (kill connecton)
 ```
 sudo screen /dev/ttyUSB0 115200
 ```
 
-## Load Code Over WiFi::
+## Load Code Over WiFi (only small files):
 Create main.py on your machine, then serve it locally:
 ```
 python -m http.server
@@ -58,6 +59,28 @@ f.close()
 
 ```
 
+## Load Code via ampy:
+Reset Huzzah and Ctrl-C from serial connection if necessary to get to REPL prompt.
+```
+sudo ampy --port /dev/ttyUSB0 put main.py
+```
+
+### Other ampy functions:
+
+#### List files:
+```
+sudo ampy --port /dev/ttyUSB0 ls
+```
+
+#### Get file (to stdout):
+```
+sudo ampy --port /dev/ttyUSB0 get main.py
+```
+
+#### Delete file:
+```
+sudo ampy --port /dev/ttyUSB0 rm main.py
+```
 
 ## Random Notes
 
