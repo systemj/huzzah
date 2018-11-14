@@ -131,6 +131,15 @@ def do_connect():
     print('network config:', sta_if.ifconfig())
 ```
 
+### Get MAC:
+```
+import network
+import ubinascii
+wlan = network.WLAN(network.STA_IF)
+ubinascii.hexlify(wlan.config('mac'), ':')
+b'80:7d:3a:58:89:0e'
+>>> 
+```
 
 ### http/https:
 (via https://github.com/micropython/micropython-lib/blob/master/urequests/example_xively.py)
@@ -155,4 +164,24 @@ import ntptime
 import utime
 ntptime.settime()
 utime.localtime()
+```
+
+#### Random Numbers
+Get random (#bits):
+```
+import urandom
+urandom.random(1)
+```
+
+### Get Board Info
+
+#### Memory
+```
+import micropython
+micropython.mem_info()
+```
+
+#### Firmware and Network Dump:
+```
+import port_diag
 ```
